@@ -5,39 +5,39 @@ import CountryFlagList from '../presentational/flag-list.component';
 import '../country.css';
 
 class ContinentsContainer extends Component {
-    constructor(props) {
-        super(props);
-    }
+	constructor(props) {
+		super(props);
+	}
 
-    chooseContinent = (event) => (
-        this.props.dispatch(setContinent(event.target.value))
-    )
+	chooseContinent = (event) => (
+		this.props.dispatch(setContinent(event.target.value))
+	)
 
-    deleteCountry = (id) => (
-        this.props.dispatch(deleteCountry(id))
-    )
+	deleteCountry = (id) => (
+		this.props.dispatch(deleteCountry(id))
+	)
 
-    componentDidMount() {
-        this.props.dispatch(setContinent('Europa'));
-    }
+	componentDidMount() {
+		this.props.dispatch(setContinent('Europa'));
+	}
 
-    render() {
-        return (
-            <div>
-                <select onChange={this.chooseContinent}>
-                    <option value="Europa">Europa</option>
-                    <option value="Afryka">Afryka</option>
-                </select>
-                <CountryFlagList countries={this.props.visibleCountries} deleteCountry={this.deleteCountry}/>
-            </div>
-        )
-    }
+	render() {
+		return (
+			<div>
+				<select onChange={this.chooseContinent}>
+					<option value="Europa">Europa</option>
+					<option value="Afryka">Afryka</option>
+				</select>
+				<CountryFlagList countries={this.props.visibleCountries} deleteCountry={this.deleteCountry}/>
+			</div>
+		)
+	}
 }
 
 const mapStateToProps = function (store) {
-    return {
-        visibleCountries: store.countriesReducer.visibleCountries
-    };
+	return {
+		visibleCountries: store.countriesReducer.visibleCountries
+	};
 };
 
 export default connect(mapStateToProps)(ContinentsContainer);
